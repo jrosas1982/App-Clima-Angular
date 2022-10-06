@@ -1,0 +1,28 @@
+<div *ngIf="error" class="alert alert-dismissible alert-danger">
+    <strong>Ups</strong> <a href="#" class="alert-link"> La {{ciudad}} no exite</a>.
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="../../../assets/clima.png" alt="" width="300px" height="300px">
+        </div>
+        <div class="col-lg-6">
+            <input type="text" [(ngModel)]="ciudad" class="form-control" placeholder="Ingrese ciudad">
+            <button (click)="obtenerClima()" [disabled]="ciudad == ''" class="btn btn-primary btn-lg btn-block mt-4">Obtener clima</button>
+
+            <div *ngIf="loading" class="text-center mt-5">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
+            <div *ngIf="query" class="card">
+                <div class="card-body">
+                    <p>Temperatura: <b>{{temperatura | number: '1.2-2'}}  °C</b></p>
+                    <p>Humedad <b>{{humedad}}</b> </p>
+                    <p>Clima <b>{{clima}}</b> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
